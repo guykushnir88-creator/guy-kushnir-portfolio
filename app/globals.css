@@ -1,0 +1,73 @@
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=JetBrains+Mono:wght@400;500;600&display=swap');
+
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+:root {
+  --bg-primary: #0B1628;
+  --bg-card: #0D1F30;
+  --bg-surface: #111D2E;
+  --text-primary: #EDF2F7;
+  --text-secondary: #C8D6E5;
+  --text-muted: #5B7B9A;
+  --accent-blue: #2E8BC0;
+}
+
+* {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+html {
+  scroll-behavior: smooth;
+}
+
+body {
+  background-color: #0B1628;
+  color: #C8D6E5;
+  font-family: 'Inter', system-ui, sans-serif;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+/* Custom scrollbar */
+::-webkit-scrollbar {
+  width: 6px;
+}
+::-webkit-scrollbar-track {
+  background: #0B1628;
+}
+::-webkit-scrollbar-thumb {
+  background: #2E8BC0;
+  border-radius: 3px;
+}
+::-webkit-scrollbar-thumb:hover {
+  background: #3da0d8;
+}
+
+/* Selection */
+::selection {
+  background: rgba(46, 139, 192, 0.3);
+  color: #EDF2F7;
+}
+
+/* Syntax highlight theme for JSON block */
+.json-key { color: #2E8BC0; }
+.json-string { color: #27AE60; }
+.json-number { color: #E67E22; }
+.json-bool { color: #8E44AD; }
+.json-null { color: #E74C3C; }
+.json-punct { color: #5B7B9A; }
+
+/* Section transitions */
+section {
+  scroll-margin-top: 80px;
+}
+
+/* Card hover glow */
+.card-glow:hover {
+  box-shadow: 0 0 20px rgba(46, 139, 192, 0.2);
+  border-color: rgba(46, 139, 192, 0.4);
+}
