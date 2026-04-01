@@ -9,7 +9,7 @@ const agents = [
     name: "Initiation",
     role: "Requirements",
     color: "#2E8BC0",
-    evidence: "5 docs · 4,820 words",
+    evidence: "9 docs · 6 assumptions challenged",
     outputs: [
       "Project Charter",
       "Stakeholder Register",
@@ -43,6 +43,7 @@ const agents = [
     role: "Wave execution",
     color: "#3B8BD4",
     evidence: "17/18 tasks done",
+    badge: "Guided | Auto",
     outputs: [
       "Task Completion Reports",
       "Wave Status Updates",
@@ -58,6 +59,7 @@ const agents = [
     role: "KPI + Earned Value",
     color: "#E67E22",
     evidence: "SPI 0.93 · CPI 1.04",
+    badge: "3-Tier",
     outputs: [
       "KPI Dashboard",
       "EV Analysis",
@@ -88,6 +90,7 @@ const agents = [
     role: "Retrospective",
     color: "#1D9E75",
     evidence: "9.3/10 satisfaction",
+    badge: "+ Knowledge Base",
     outputs: [
       "Lessons Learned",
       "Final Report",
@@ -170,6 +173,23 @@ const jsonPreview = `{
   "context_checkpoint": {
     "last_completed_deliverable": "Sprint plan",
     "can_resume_from_here": true
+  }
+}`;
+
+const copilotJsonPreview = `{
+  "section_b_copilot_analysis": {
+    "risks_identified": 6,
+    "blind_spots": 6,
+    "moscow_classification": {
+      "must": 7, "should": 3, "could": 2, "wont": 3
+    },
+    "deviations_from_brief": 3,
+    "critical_flags": ["R-01: No properties owned (score 16)"]
+  },
+  "section_c_knowledge_log": {
+    "issues": 5,
+    "pattern_tags": ["scope-fiction", "assumption-gap", "resource-constraint"],
+    "prevention_playbook": true
   }
 }`;
 
@@ -266,6 +286,14 @@ export default function PMAgentChain() {
                   >
                     {agent.evidence}
                   </p>
+                  {agent.badge && (
+                    <span
+                      className="inline-block mt-2 px-2 py-0.5 rounded text-[10px] font-mono font-semibold text-white"
+                      style={{ backgroundColor: agent.color }}
+                    >
+                      {agent.badge}
+                    </span>
+                  )}
                 </button>
 
                 {/* Arrow between agents */}
@@ -367,6 +395,10 @@ export default function PMAgentChain() {
               ))}
             </div>
           </div>
+
+          <p className="text-text-muted text-xs font-mono mt-4 text-center">
+            v2.0 — Co-pilot layer on all 6 agents. 104 files. Schema v1.3.0.
+          </p>
         </div>
 
         {/* ── v1.3.0 Features ── */}
@@ -380,6 +412,80 @@ export default function PMAgentChain() {
           </h3>
           <div className="grid sm:grid-cols-2 gap-4">
             {features.map((f) => (
+              <div
+                key={f.key}
+                className="p-5 rounded-xl border border-white/5 bg-bg-card card-glow transition-all duration-200"
+              >
+                <div className="flex items-start gap-3 mb-3">
+                  <div
+                    className="w-1 h-12 rounded-full flex-shrink-0"
+                    style={{ backgroundColor: f.color }}
+                  />
+                  <div>
+                    <p className="font-mono text-xs text-text-muted mb-1">
+                      {f.key}
+                    </p>
+                    <h4 className="text-text-primary font-semibold text-sm">
+                      {f.title}
+                    </h4>
+                  </div>
+                </div>
+                <p className="text-text-secondary text-sm leading-relaxed pl-4">
+                  {f.description}
+                </p>
+              </div>
+            ))}
+          </div>
+        </div>
+
+        {/* ── v2.0 Co-Pilot Layer ── */}
+        <div
+          className={`mb-20 transition-all duration-700 delay-150 ${
+            inView ? "opacity-100 translate-y-0" : "opacity-0 translate-y-8"
+          }`}
+        >
+          <h3 className="text-xl font-semibold text-text-primary mb-1">
+            v2.0 — The Co-Pilot Layer
+          </h3>
+          <p className="text-text-secondary text-sm italic mb-6">
+            Agents that challenge PMs, not just execute for them.
+          </p>
+          <p className="text-text-secondary text-sm leading-relaxed mb-6 max-w-3xl">
+            v2.0 adds an AI co-pilot layer across all 6 agents. Every agent now challenges
+            assumptions, identifies blind spots, and builds institutional knowledge — turning the
+            chain from an automation tool into a senior PM advisor.
+          </p>
+          <div className="grid sm:grid-cols-2 gap-4">
+            {[
+              {
+                key: "co-pilot-output",
+                title: "Three-Section Output",
+                description:
+                  "Every agent produces Section A (deliverables), Section B (co-pilot analysis: risks, blind spots, MoSCoW priorities, deviations), and Section C (institutional knowledge log with searchable pattern tags).",
+                color: "#2E8BC0",
+              },
+              {
+                key: "complexity-input",
+                title: "Project Complexity Profile",
+                description:
+                  "Agent 1 now requires a 10-dimension complexity assessment as input — industry regulation, team distribution, technical novelty, stakeholder count, and more. The co-pilot calibrates its challenge intensity based on project complexity.",
+                color: "#27AE60",
+              },
+              {
+                key: "agent-3-modes",
+                title: "Dual Execution Mode",
+                description:
+                  "Agent 3 operates in Guided mode (PM reviews and approves each action) or Automated mode (MCP pushes directly to tools). Default: Guided. The PM leads — the agents advise.",
+                color: "#3B8BD4",
+              },
+              {
+                key: "agent-4-tiers",
+                title: "Three-Tier Reporting",
+                description:
+                  "Agent 4 auto-generates three report tiers from the same data: Tier 1 (PM dashboard with task-level detail), Tier 2 (Director cross-project view), Tier 3 (C-suite executive summary). One data source, three audiences.",
+                color: "#E67E22",
+              },
+            ].map((f) => (
               <div
                 key={f.key}
                 className="p-5 rounded-xl border border-white/5 bg-bg-card card-glow transition-all duration-200"
@@ -434,6 +540,26 @@ export default function PMAgentChain() {
           <p className="text-text-muted text-xs font-mono mt-3 text-center">
             9 schemas · 21 shared types · 8 required fields · Full traceability
           </p>
+
+          {/* v2.0 Co-Pilot Output */}
+          <h4 className="text-lg font-semibold text-text-primary mt-8 mb-4">
+            v2.0 Co-Pilot Output
+          </h4>
+          <div className="rounded-xl border border-accent-blue/20 bg-bg-card overflow-hidden">
+            <div className="flex items-center gap-2 px-4 py-3 border-b border-white/5 bg-bg-surface">
+              <div className="flex gap-1.5">
+                <div className="w-3 h-3 rounded-full bg-accent-red/60" />
+                <div className="w-3 h-3 rounded-full bg-accent-orange/60" />
+                <div className="w-3 h-3 rounded-full bg-accent-green/60" />
+              </div>
+              <span className="font-mono text-xs text-text-muted ml-2">
+                copilot-output-v2.0.json
+              </span>
+            </div>
+            <div className="p-5 overflow-x-auto">
+              <JsonHighlight json={copilotJsonPreview} />
+            </div>
+          </div>
         </div>
 
         {/* ── Tool Ecosystem ── */}

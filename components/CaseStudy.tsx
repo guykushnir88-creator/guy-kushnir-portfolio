@@ -19,7 +19,7 @@ const briefVsReality = [
 ];
 
 const metrics = [
-  { label: "Documents produced", value: 25, suffix: "" },
+  { label: "Documents produced", value: 33, suffix: "" },
   { label: "Words with evidence", value: 16320, suffix: "" },
   { label: "Truths verified", value: 31, suffix: "" },
   { label: "Waves", value: 4, suffix: "", subtext: "15 tasks" },
@@ -35,6 +35,10 @@ const scorecard = [
   { label: "Reliability", score: 92, color: "#1D9E75" },
 ];
 
+function easeOutCubic(t: number): number {
+  return 1 - Math.pow(1 - t, 3);
+}
+
 function AnimatedNumber({
   target,
   isFloat,
@@ -48,15 +52,20 @@ function AnimatedNumber({
 
   useEffect(() => {
     if (!animate) return;
-    const duration = 1800;
+    const duration = 1500;
     let start: number | null = null;
+    let rafId: number;
     const step = (ts: number) => {
       if (!start) start = ts;
       const p = Math.min((ts - start) / duration, 1);
-      setVal(isFloat ? parseFloat((p * target).toFixed(1)) : Math.floor(p * target));
-      if (p < 1) requestAnimationFrame(step);
+      const eased = easeOutCubic(p);
+      setVal(isFloat ? parseFloat((eased * target).toFixed(1)) : Math.floor(eased * target));
+      if (p < 1) {
+        rafId = requestAnimationFrame(step);
+      }
     };
-    requestAnimationFrame(step);
+    rafId = requestAnimationFrame(step);
+    return () => cancelAnimationFrame(rafId);
   }, [target, isFloat, animate]);
 
   return <>{isFloat ? val.toFixed(1) : val.toLocaleString()}</>;
@@ -218,6 +227,50 @@ export default function CaseStudy() {
               </span>
             </div>
           </div>
+        </div>
+
+        {/* v2.0 Agent 1 Test Run */}
+        <div
+          className={`mt-14 transition-all duration-700 delay-300 ${
+            inView ? "opacity-100 translate-y-0" : "opacity-0 translate-y-8"
+          }`}
+        >
+          <h3 className="text-lg font-semibold text-text-primary mb-2">
+            v2.0 Agent 1 — Live Test Run
+          </h3>
+          <p className="text-text-secondary text-sm mb-5">
+            Ran on the Blue Horizon project brief. 9 markdown files → 8 Word documents in one session.
+          </p>
+          <div className="grid grid-cols-1 sm:grid-cols-2 gap-3">
+            {[
+              { id: "BHLL-01", title: "Context Analysis", detail: "6 challenged assumptions" },
+              { id: "BHLL-02", title: "Project Charter", detail: null },
+              { id: "BHLL-03", title: "Statement of Work", detail: null },
+              { id: "BHLL-04", title: "Business Case", detail: "3-scenario ROI analysis" },
+              { id: "BHLL-05", title: "Requirements Catalog", detail: "15 requirements, MoSCoW classified" },
+              { id: "BHLL-06", title: "Stakeholder Register", detail: "5 stakeholders, influence/interest matrix" },
+              { id: "BHLL-07", title: "Co-Pilot Analysis", detail: "6 risks (R-01 critical score 16), 6 blind spots, 3 flags" },
+              { id: "BHLL-08", title: "Knowledge Log", detail: "5 issues with pattern tags, prevention playbook" },
+            ].map((item) => (
+              <div
+                key={item.id}
+                className="flex items-start gap-3 p-4 rounded-xl border border-white/5 bg-bg-card"
+              >
+                <span className="font-mono text-xs text-accent-blue bg-accent-blue/10 px-2 py-1 rounded flex-shrink-0">
+                  {item.id}
+                </span>
+                <div>
+                  <p className="text-text-primary text-sm font-semibold">{item.title}</p>
+                  {item.detail && (
+                    <p className="text-text-muted text-xs mt-0.5">{item.detail}</p>
+                  )}
+                </div>
+              </div>
+            ))}
+          </div>
+          <p className="text-text-muted text-xs mt-4 text-center italic">
+            &quot;One input. Eight structured deliverables. Zero manual templating.&quot;
+          </p>
         </div>
       </div>
     </section>

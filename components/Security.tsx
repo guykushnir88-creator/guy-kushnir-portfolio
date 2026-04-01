@@ -3,6 +3,7 @@ const badges = [
   { label: "RBAC + Scoped Tokens", icon: "🛡️" },
   { label: "HITL Gates", icon: "🚦" },
   { label: "Audit + Monitoring", icon: "📋" },
+  { label: "Co-Pilot HITL", icon: "🧠" },
 ];
 
 export default function Security() {
@@ -15,8 +16,7 @@ export default function Security() {
               Security
             </span>
             <p className="text-text-primary font-medium mt-1">
-              HITL gates on every destructive action. 4-layer enterprise
-              security.
+              Human-in-the-loop gates on every agent. Co-pilot challenges assumptions. The PM always leads.
             </p>
           </div>
           <div className="flex flex-wrap gap-3">

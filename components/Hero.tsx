@@ -5,23 +5,32 @@ import { useEffect, useRef, useState } from "react";
 const stats = [
   { label: "Years Experience", value: 15, suffix: "+" },
   { label: "AI Agents", value: 6, suffix: "" },
-  { label: "Files", value: 83, suffix: "" },
+  { label: "Files", value: 104, suffix: "" },
   { label: "Quality Grade", value: "A", suffix: "", isText: true },
-  { label: "Schema Version", value: "1.3.0", suffix: "", isText: true },
+  { label: "Framework Version", value: "2.0", suffix: "", isText: true },
 ];
 
-function useCountUp(target: number, duration = 2000, start = false) {
+function easeOutCubic(t: number): number {
+  return 1 - Math.pow(1 - t, 3);
+}
+
+function useCountUp(target: number, duration = 1500, start = false) {
   const [count, setCount] = useState(0);
   useEffect(() => {
     if (!start) return;
     let startTime: number | null = null;
+    let rafId: number;
     const step = (timestamp: number) => {
       if (!startTime) startTime = timestamp;
       const progress = Math.min((timestamp - startTime) / duration, 1);
-      setCount(Math.floor(progress * target));
-      if (progress < 1) requestAnimationFrame(step);
+      const eased = easeOutCubic(progress);
+      setCount(Math.floor(eased * target));
+      if (progress < 1) {
+        rafId = requestAnimationFrame(step);
+      }
     };
-    requestAnimationFrame(step);
+    rafId = requestAnimationFrame(step);
+    return () => cancelAnimationFrame(rafId);
   }, [target, duration, start]);
   return count;
 }
@@ -68,7 +77,7 @@ export default function Hero() {
           observer.disconnect();
         }
       },
-      { threshold: 0.3 }
+      { threshold: 0.1 }
     );
     if (statsRef.current) observer.observe(statsRef.current);
     return () => observer.disconnect();

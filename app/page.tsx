@@ -6,6 +6,7 @@ import PMAgentChain from "@/components/PMAgentChain";
 import CaseStudy from "@/components/CaseStudy";
 import Dashboard from "@/components/Dashboard";
 import Security from "@/components/Security";
+import SocialProof from "@/components/SocialProof";
 import Contact from "@/components/Contact";
 import Footer from "@/components/Footer";
 
@@ -21,6 +22,7 @@ export default function Home() {
         <CaseStudy />
         <Dashboard />
         <Security />
+        <SocialProof />
         <Contact />
       </main>
       <Footer />
