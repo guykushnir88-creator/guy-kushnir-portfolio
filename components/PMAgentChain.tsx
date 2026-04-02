@@ -512,6 +512,100 @@ export default function PMAgentChain() {
           </div>
         </div>
 
+        {/* ── v2.1 Persona Validation Test ── */}
+        <div
+          className={`mb-20 transition-all duration-700 delay-200 ${
+            inView ? "opacity-100 translate-y-0" : "opacity-0 translate-y-8"
+          }`}
+        >
+          <h3 className="text-xl font-semibold text-text-primary mb-1">
+            v2.1 — Tested Against Itself
+          </h3>
+          <p className="text-text-secondary text-sm italic mb-6">
+            Two studies showed expert personas degrade AI accuracy. So I tested my own framework.
+          </p>
+
+          {/* A/B Test Cards */}
+          <div className="grid sm:grid-cols-2 gap-4 mb-8">
+            <div className="p-5 rounded-xl border border-accent-blue/30 bg-bg-card card-glow">
+              <div className="flex items-start gap-3 mb-3">
+                <div className="w-1 h-12 rounded-full flex-shrink-0 bg-accent-blue" />
+                <div>
+                  <p className="font-mono text-xs text-accent-blue mb-1">Version A — With Persona</p>
+                  <h4 className="text-text-primary font-semibold text-sm">
+                    &ldquo;Senior PM Advisor&rdquo; identity prompt
+                  </h4>
+                </div>
+              </div>
+              <div className="pl-4 space-y-1">
+                <p className="text-text-secondary text-sm">
+                  <span className="font-mono text-accent-blue">35/40</span> quality
+                </p>
+                <p className="text-text-secondary text-sm">
+                  <span className="font-mono text-accent-blue">12</span> requirements
+                </p>
+                <p className="text-text-secondary text-sm">
+                  <span className="font-mono text-accent-red">3</span> red flags
+                </p>
+              </div>
+            </div>
+
+            <div className="p-5 rounded-xl border border-accent-green/30 bg-bg-card card-glow">
+              <div className="flex items-start gap-3 mb-3">
+                <div className="w-1 h-12 rounded-full flex-shrink-0 bg-accent-green" />
+                <div>
+                  <p className="font-mono text-xs text-accent-green mb-1">Version B — No Persona</p>
+                  <h4 className="text-text-primary font-semibold text-sm">
+                    Structural analysis rules only
+                  </h4>
+                </div>
+              </div>
+              <div className="pl-4 space-y-1">
+                <p className="text-text-secondary text-sm">
+                  <span className="font-mono text-accent-green">39/40</span> quality
+                </p>
+                <p className="text-text-secondary text-sm">
+                  <span className="font-mono text-accent-green">24</span> requirements
+                </p>
+                <p className="text-text-secondary text-sm">
+                  <span className="font-mono text-accent-green">0</span> red flags
+                </p>
+              </div>
+            </div>
+          </div>
+
+          {/* Center Metric */}
+          <div className="text-center mb-8">
+            <p className="text-3xl font-bold text-text-primary">
+              12/12 <span className="text-lg font-normal text-text-secondary">planted gaps caught by BOTH versions</span>
+            </p>
+            <p className="text-text-muted text-sm mt-2 italic">
+              The structure does the work. The persona is optional seasoning.
+            </p>
+          </div>
+
+          {/* Key Findings */}
+          <div className="space-y-3 mb-8 max-w-3xl">
+            {[
+              "Gap detection tied — the co-pilot structure caught everything regardless of persona",
+              "Persona traded precision for persuasion — sounded confident but less calibrated",
+              "Fix: replaced persona with analysis rules + claim verification framework → v2.1",
+            ].map((finding, i) => (
+              <div key={i} className="flex items-start gap-3">
+                <span className="font-mono text-xs text-accent-blue mt-0.5">{i + 1}.</span>
+                <p className="text-text-secondary text-sm leading-relaxed">{finding}</p>
+              </div>
+            ))}
+          </div>
+
+          {/* Bottom Badge */}
+          <div className="rounded-lg bg-accent-green/10 border border-accent-green/20 px-5 py-3 text-center">
+            <p className="text-sm text-accent-green font-medium">
+              Kerzner Level 5: Continuous Improvement — framework tested, measured, and upgraded in 24 hours
+            </p>
+          </div>
+        </div>
+
         {/* ── JSON Schema Preview ── */}
         <div
           className={`mb-20 transition-all duration-700 delay-200 ${
