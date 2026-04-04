@@ -4,11 +4,11 @@ import { useRef } from "react";
 import { useInView } from "./hooks/useInView";
 
 const traction = [
-  { value: "21,894", label: "impressions in 3 days" },
+  { value: "29,500+", label: "impressions" },
   { value: "154", label: "reactions" },
   { value: "56.5%", label: "decision-maker audience" },
-  { value: "1,897", label: "LinkedIn followers" },
-  { value: "17", label: "active pipeline leads" },
+  { value: "1,956", label: "LinkedIn followers" },
+  { value: "23", label: "active pipeline leads" },
 ];
 
 export default function SocialProof() {

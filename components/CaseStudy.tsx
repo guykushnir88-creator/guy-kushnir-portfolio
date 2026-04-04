@@ -229,14 +229,14 @@ export default function CaseStudy() {
           </div>
         </div>
 
-        {/* v2.0 Agent 1 Test Run */}
+        {/* v2.2 Agent 1 Test Run */}
         <div
           className={`mt-14 transition-all duration-700 delay-300 ${
             inView ? "opacity-100 translate-y-0" : "opacity-0 translate-y-8"
           }`}
         >
           <h3 className="text-lg font-semibold text-text-primary mb-2">
-            v2.0 Agent 1 — Live Test Run
+            v2.2 Agent 1 — Live Test Run
           </h3>
           <p className="text-text-secondary text-sm mb-5">
             Ran on the Blue Horizon project brief. 9 markdown files → 8 Word documents in one session.

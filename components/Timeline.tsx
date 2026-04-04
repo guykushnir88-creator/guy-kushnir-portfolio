@@ -11,7 +11,7 @@ const jobs = [
     tags: ["AI Automation", "PM Agent Chain", "Claude AI + MCP"],
     description: "Building AI systems that automate project management",
     highlights: [
-      "Built PM Agent Chain v2.0 — 6 autonomous agents, 104 files, co-pilot architecture",
+      "Built PM Agent Chain v2.2 — 6 autonomous agents, 108 files, co-pilot architecture",
       "21,000+ LinkedIn impressions in 3 days, 17 active pipeline leads",
       "Enterprise clients exploring licensing for PMO automation",
       "Live case study: Blue Horizon — Agent 1 caught critical scope gap, reframed entire project",

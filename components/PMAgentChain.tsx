@@ -397,7 +397,7 @@ export default function PMAgentChain() {
           </div>
 
           <p className="text-text-muted text-xs font-mono mt-4 text-center">
-            v2.0 — Co-pilot layer on all 6 agents. 104 files. Schema v1.3.0.
+            v2.2 — Co-pilot layer on all 6 agents. 108 files. Knowledge base indexing. Calibrated challenge.
           </p>
         </div>
 
@@ -438,20 +438,20 @@ export default function PMAgentChain() {
           </div>
         </div>
 
-        {/* ── v2.0 Co-Pilot Layer ── */}
+        {/* ── v2.2 Co-Pilot Layer ── */}
         <div
           className={`mb-20 transition-all duration-700 delay-150 ${
             inView ? "opacity-100 translate-y-0" : "opacity-0 translate-y-8"
           }`}
         >
           <h3 className="text-xl font-semibold text-text-primary mb-1">
-            v2.0 — The Co-Pilot Layer
+            v2.2 — The Co-Pilot Layer
           </h3>
           <p className="text-text-secondary text-sm italic mb-6">
             Agents that challenge PMs, not just execute for them.
           </p>
           <p className="text-text-secondary text-sm leading-relaxed mb-6 max-w-3xl">
-            v2.0 adds an AI co-pilot layer across all 6 agents. Every agent now challenges
+            v2.2 adds an AI co-pilot layer across all 6 agents. Every agent now challenges
             assumptions, identifies blind spots, and builds institutional knowledge — turning the
             chain from an automation tool into a senior PM advisor.
           </p>
@@ -484,6 +484,20 @@ export default function PMAgentChain() {
                 description:
                   "Agent 4 auto-generates three report tiers from the same data: Tier 1 (PM dashboard with task-level detail), Tier 2 (Director cross-project view), Tier 3 (C-suite executive summary). One data source, three audiences.",
                 color: "#E67E22",
+              },
+              {
+                key: "knowledge-base",
+                title: "Cross-Project Knowledge Base",
+                description:
+                  "Institutional knowledge that carries across projects. Every issue is tagged by pattern and indexed — the system learns from every engagement, so the next project starts smarter than the last.",
+                color: "#9B59B6",
+              },
+              {
+                key: "calibrated-challenge",
+                title: "Calibrated Challenge",
+                description:
+                  "Flags real issues, not theoretical noise. The co-pilot identifies genuine blind spots and real failure modes — not 'have you considered...' observations. Precision over volume.",
+                color: "#E74C3C",
               },
             ].map((f) => (
               <div
@@ -635,9 +649,9 @@ export default function PMAgentChain() {
             9 schemas · 21 shared types · 8 required fields · Full traceability
           </p>
 
-          {/* v2.0 Co-Pilot Output */}
+          {/* v2.2 Co-Pilot Output */}
           <h4 className="text-lg font-semibold text-text-primary mt-8 mb-4">
-            v2.0 Co-Pilot Output
+            v2.2 Co-Pilot Output
           </h4>
           <div className="rounded-xl border border-accent-blue/20 bg-bg-card overflow-hidden">
             <div className="flex items-center gap-2 px-4 py-3 border-b border-white/5 bg-bg-surface">
@@ -647,7 +661,7 @@ export default function PMAgentChain() {
                 <div className="w-3 h-3 rounded-full bg-accent-green/60" />
               </div>
               <span className="font-mono text-xs text-text-muted ml-2">
-                copilot-output-v2.0.json
+                copilot-output-v2.2.json
               </span>
             </div>
             <div className="p-5 overflow-x-auto">
