@@ -63,7 +63,7 @@ export default function Contact() {
 
           {/* Discovery Call CTA */}
           <a
-            href="https://calendly.com/guykushnir88/pm-agent-chain-30-min-discovery-call"
+            href="https://calendly.com/guykushnir/pm-agent-chain-30-min-discovery-call"
             target="_blank"
             rel="noopener noreferrer"
             className="inline-flex items-center gap-2 px-8 py-4 bg-accent-blue text-white font-semibold rounded-xl hover:bg-accent-blue/90 transition-all duration-200 hover:shadow-blue-glow-lg text-base mb-14"
