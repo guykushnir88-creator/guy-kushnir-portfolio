@@ -61,13 +61,68 @@ export default function Contact() {
             </a>
           </div>
 
-          {/* Primary CTA */}
+          {/* Discovery Call CTA */}
           <a
-            href="mailto:Guykushnir88@gmail.com?subject=PM Agent Chain — Let's try it on my project&body=Hi Guy,%0A%0AI'd like to discuss running PM Agent Chain on my project.%0A%0A"
-            className="inline-flex items-center gap-2 px-8 py-4 bg-accent-blue text-white font-semibold rounded-xl hover:bg-accent-blue/90 transition-all duration-200 hover:shadow-blue-glow-lg text-base"
+            href="https://calendly.com/guykushnir88/pm-agent-chain-30-min-discovery-call"
+            target="_blank"
+            rel="noopener noreferrer"
+            className="inline-flex items-center gap-2 px-8 py-4 bg-accent-blue text-white font-semibold rounded-xl hover:bg-accent-blue/90 transition-all duration-200 hover:shadow-blue-glow-lg text-base mb-14"
           >
-            Let&apos;s try it on your project →
+            Book a Discovery Call →
           </a>
+
+          {/* Contact Form */}
+          <form
+            action="https://formspree.io/f/xreoyvvq"
+            method="POST"
+            className="max-w-lg mx-auto text-left space-y-4"
+          >
+            <div>
+              <label htmlFor="name" className="block text-text-muted text-xs font-mono uppercase tracking-wider mb-1.5">
+                Name
+              </label>
+              <input
+                type="text"
+                id="name"
+                name="name"
+                required
+                className="w-full px-4 py-3 rounded-lg border border-white/10 bg-bg-card text-text-primary text-sm placeholder:text-text-muted/50 focus:outline-none focus:border-accent-blue/60 focus:ring-1 focus:ring-accent-blue/30 transition-colors"
+                placeholder="Your name"
+              />
+            </div>
+            <div>
+              <label htmlFor="email" className="block text-text-muted text-xs font-mono uppercase tracking-wider mb-1.5">
+                Email
+              </label>
+              <input
+                type="email"
+                id="email"
+                name="email"
+                required
+                className="w-full px-4 py-3 rounded-lg border border-white/10 bg-bg-card text-text-primary text-sm placeholder:text-text-muted/50 focus:outline-none focus:border-accent-blue/60 focus:ring-1 focus:ring-accent-blue/30 transition-colors"
+                placeholder="you@example.com"
+              />
+            </div>
+            <div>
+              <label htmlFor="message" className="block text-text-muted text-xs font-mono uppercase tracking-wider mb-1.5">
+                Message
+              </label>
+              <textarea
+                id="message"
+                name="message"
+                required
+                rows={4}
+                className="w-full px-4 py-3 rounded-lg border border-white/10 bg-bg-card text-text-primary text-sm placeholder:text-text-muted/50 focus:outline-none focus:border-accent-blue/60 focus:ring-1 focus:ring-accent-blue/30 transition-colors resize-none"
+                placeholder="Tell me about your project..."
+              />
+            </div>
+            <button
+              type="submit"
+              className="w-full px-6 py-3 border border-accent-blue/40 text-accent-blue font-medium rounded-lg hover:bg-accent-blue/10 transition-all duration-200 text-sm"
+            >
+              Send Message
+            </button>
+          </form>
         </div>
       </div>
     </section>
