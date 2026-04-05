@@ -2,9 +2,9 @@ import type { Metadata } from "next";
 import "./globals.css";
 
 export const metadata: Metadata = {
-  title: "Guy Kushnir — Senior Project Manager & AI Builder",
+  title: "PM Agent Chain — AI-Powered Project Lifecycle Analysis | Guy Kushnir",
   description:
-    "Senior Project Manager with 15+ years leading enterprise projects across FinTech, InsurTech, and Cybersecurity. Builder of PM Agent Chain — a 6-agent AI framework automating the full PMI lifecycle.",
+    "6 autonomous AI agents covering the full PMI lifecycle. 45 auditable deliverables in 91 minutes. Built by Guy Kushnir — 15+ years leading enterprise projects across FinTech, InsurTech, and Cybersecurity.",
   keywords: [
     "Guy Kushnir",
     "Project Manager",
