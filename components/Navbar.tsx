@@ -5,11 +5,11 @@ import Link from "next/link";
 import { usePathname } from "next/navigation";
 
 const navLinks = [
-  { label: "About", href: "#about" },
-  { label: "Experience", href: "#timeline" },
   { label: "PM Agent Chain", href: "#pm-agent-chain" },
-  { label: "Case Study", href: "#case-study" },
-  { label: "CloudSync Study", href: "/case-study" },
+  { label: "Case Study", href: "/case-study" },
+  { label: "ROI Calculator", href: "/roi-calculator" },
+  { label: "Assessment", href: "/assessment" },
+  { label: "About", href: "#about" },
   { label: "Contact", href: "#contact" },
 ];
 

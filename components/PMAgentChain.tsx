@@ -133,81 +133,6 @@ const features = [
   },
 ];
 
-const toolEcosystem = [
-  {
-    category: "Knowledge",
-    tools: ["Notion", "Google", "Firecrawl", "Brave", "Seq. Thinking"],
-  },
-  { category: "Design", tools: ["Figma", "Zeplin"] },
-  {
-    category: "Dev Tools",
-    tools: ["Jira", "GitHub", "Linear", "Trello", "Monday", "ClickUp"],
-  },
-  {
-    category: "Infrastructure",
-    tools: ["PostgreSQL", "MongoDB", "Supabase", "Docker", "K8s", "AWS"],
-  },
-  { category: "Observability", tools: ["Sentry", "Grafana"] },
-  { category: "Communication", tools: ["Slack", "Teams", "Zapier"] },
-];
-
-const jsonPreview = `{
-  "source_agent": "planning-agent",
-  "target_agent": "execution-agent",
-  "payload_version": "1.3.0",
-  "status": "complete",
-  "verification_evidence": {
-    "metrics": {
-      "documents_produced": 6,
-      "requirements_covered": 100
-    }
-  },
-  "goal_backward_check": {
-    "truths": [{
-      "id": "T-04",
-      "statement": "All requirements decomposed",
-      "status": "verified"
-    }],
-    "overall_goal_achieved": true
-  },
-  "context_checkpoint": {
-    "last_completed_deliverable": "Sprint plan",
-    "can_resume_from_here": true
-  }
-}`;
-
-const copilotJsonPreview = `{
-  "section_b_copilot_analysis": {
-    "risks_identified": 6,
-    "blind_spots": 6,
-    "moscow_classification": {
-      "must": 7, "should": 3, "could": 2, "wont": 3
-    },
-    "deviations_from_brief": 3,
-    "critical_flags": ["R-01: No properties owned (score 16)"]
-  },
-  "section_c_knowledge_log": {
-    "issues": 5,
-    "pattern_tags": ["scope-fiction", "assumption-gap", "resource-constraint"],
-    "prevention_playbook": true
-  }
-}`;
-
-function JsonHighlight({ json }: { json: string }) {
-  const highlighted = json
-    .replace(/("[\w_]+")\s*:/g, '<span class="json-key">$1</span>:')
-    .replace(/:\s*(".*?")/g, ': <span class="json-string">$1</span>')
-    .replace(/:\s*(\d+)/g, ': <span class="json-number">$1</span>')
-    .replace(/:\s*(true|false)/g, ': <span class="json-bool">$1</span>')
-    .replace(/([{}[\],])/g, '<span class="json-punct">$1</span>');
-  return (
-    <pre
-      className="font-mono text-xs md:text-sm overflow-x-auto leading-relaxed"
-      dangerouslySetInnerHTML={{ __html: highlighted }}
-    />
-  );
-}
-
 export default function PMAgentChain() {
   const ref = useRef<HTMLElement>(null);
   const inView = useInView(ref, { threshold: 0.05 });
@@ -219,7 +144,7 @@ export default function PMAgentChain() {
         {/* Header */}
         <div className="mb-16 text-center">
           <span className="font-mono text-accent-blue text-sm tracking-widest uppercase">
-            Hero Project
+            Architecture
           </span>
           <h2 className="text-3xl md:text-5xl font-bold text-text-primary mt-2 mb-4">
             PM Agent Chain
@@ -247,11 +172,10 @@ export default function PMAgentChain() {
             Agent Architecture
           </h3>
 
-          {/* Agent cards — horizontal scroll on mobile */}
+          {/* Agent cards */}
           <div className="flex flex-col md:flex-row gap-3 items-stretch">
             {agents.map((agent, i) => (
               <div key={agent.id} className="flex flex-col md:flex-row items-center flex-1 gap-3">
-                {/* Card */}
                 <button
                   onClick={() =>
                     setActiveAgent(activeAgent === agent.id ? null : agent.id)
@@ -296,16 +220,9 @@ export default function PMAgentChain() {
                   )}
                 </button>
 
-                {/* Arrow between agents */}
                 {i < agents.length - 1 && (
                   <div className="flex-shrink-0 text-text-muted md:rotate-0 rotate-90">
-                    {agent.id === 4 ? (
-                      <div className="flex flex-col items-center gap-0.5">
-                        <span className="text-accent-blue text-xs">→</span>
-                      </div>
-                    ) : (
-                      <span className="text-lg">→</span>
-                    )}
+                    <span className="text-lg">→</span>
                   </div>
                 )}
               </div>
@@ -397,18 +314,18 @@ export default function PMAgentChain() {
           </div>
 
           <p className="text-text-muted text-xs font-mono mt-4 text-center">
-            v2.2 — Co-pilot layer on all 6 agents. 108 files. Knowledge base indexing. Calibrated challenge.
+            v2.3 — Co-pilot layer on all 6 agents. 180 files. 30 pattern tags. Bias detection. Strategic alignment scoring. Per-client configuration.
           </p>
         </div>
 
-        {/* ── v1.3.0 Features ── */}
+        {/* ── Key Features ── */}
         <div
           className={`mb-20 transition-all duration-700 delay-100 ${
             inView ? "opacity-100 translate-y-0" : "opacity-0 translate-y-8"
           }`}
         >
           <h3 className="text-xl font-semibold text-text-primary mb-6">
-            v1.3.0 Key Features
+            Key Features
           </h3>
           <div className="grid sm:grid-cols-2 gap-4">
             {features.map((f) => (
@@ -438,22 +355,24 @@ export default function PMAgentChain() {
           </div>
         </div>
 
-        {/* ── v2.2 Co-Pilot Layer ── */}
+        {/* ── v2.3 Co-Pilot Layer ── */}
         <div
-          className={`mb-20 transition-all duration-700 delay-150 ${
+          className={`transition-all duration-700 delay-150 ${
             inView ? "opacity-100 translate-y-0" : "opacity-0 translate-y-8"
           }`}
         >
           <h3 className="text-xl font-semibold text-text-primary mb-1">
-            v2.2 — The Co-Pilot Layer
+            v2.3 — The Co-Pilot Layer
           </h3>
           <p className="text-text-secondary text-sm italic mb-6">
             Agents that challenge PMs, not just execute for them.
           </p>
           <p className="text-text-secondary text-sm leading-relaxed mb-6 max-w-3xl">
-            v2.2 adds an AI co-pilot layer across all 6 agents. Every agent now challenges
-            assumptions, identifies blind spots, and builds institutional knowledge — turning the
-            chain from an automation tool into a senior PM advisor.
+            v2.3 adds an AI co-pilot layer across all 6 agents with 30 pattern tags,
+            bias detection, strategic alignment scoring, and per-client configuration.
+            Every agent now challenges assumptions, identifies blind spots, and builds
+            institutional knowledge — turning the chain from an automation tool into a
+            senior PM advisor.
           </p>
           <div className="grid sm:grid-cols-2 gap-4">
             {[
@@ -521,183 +440,6 @@ export default function PMAgentChain() {
                 <p className="text-text-secondary text-sm leading-relaxed pl-4">
                   {f.description}
                 </p>
-              </div>
-            ))}
-          </div>
-        </div>
-
-        {/* ── v2.1 Persona Validation Test ── */}
-        <div
-          className={`mb-20 transition-all duration-700 delay-200 ${
-            inView ? "opacity-100 translate-y-0" : "opacity-0 translate-y-8"
-          }`}
-        >
-          <h3 className="text-xl font-semibold text-text-primary mb-1">
-            v2.1 — Tested Against Itself
-          </h3>
-          <p className="text-text-secondary text-sm italic mb-6">
-            Two studies showed expert personas degrade AI accuracy. So I tested my own framework.
-          </p>
-
-          {/* A/B Test Cards */}
-          <div className="grid sm:grid-cols-2 gap-4 mb-8">
-            <div className="p-5 rounded-xl border border-accent-blue/30 bg-bg-card card-glow">
-              <div className="flex items-start gap-3 mb-3">
-                <div className="w-1 h-12 rounded-full flex-shrink-0 bg-accent-blue" />
-                <div>
-                  <p className="font-mono text-xs text-accent-blue mb-1">Version A — With Persona</p>
-                  <h4 className="text-text-primary font-semibold text-sm">
-                    &ldquo;Senior PM Advisor&rdquo; identity prompt
-                  </h4>
-                </div>
-              </div>
-              <div className="pl-4 space-y-1">
-                <p className="text-text-secondary text-sm">
-                  <span className="font-mono text-accent-blue">35/40</span> quality
-                </p>
-                <p className="text-text-secondary text-sm">
-                  <span className="font-mono text-accent-blue">12</span> requirements
-                </p>
-                <p className="text-text-secondary text-sm">
-                  <span className="font-mono text-accent-red">3</span> red flags
-                </p>
-              </div>
-            </div>
-
-            <div className="p-5 rounded-xl border border-accent-green/30 bg-bg-card card-glow">
-              <div className="flex items-start gap-3 mb-3">
-                <div className="w-1 h-12 rounded-full flex-shrink-0 bg-accent-green" />
-                <div>
-                  <p className="font-mono text-xs text-accent-green mb-1">Version B — No Persona</p>
-                  <h4 className="text-text-primary font-semibold text-sm">
-                    Structural analysis rules only
-                  </h4>
-                </div>
-              </div>
-              <div className="pl-4 space-y-1">
-                <p className="text-text-secondary text-sm">
-                  <span className="font-mono text-accent-green">39/40</span> quality
-                </p>
-                <p className="text-text-secondary text-sm">
-                  <span className="font-mono text-accent-green">24</span> requirements
-                </p>
-                <p className="text-text-secondary text-sm">
-                  <span className="font-mono text-accent-green">0</span> red flags
-                </p>
-              </div>
-            </div>
-          </div>
-
-          {/* Center Metric */}
-          <div className="text-center mb-8">
-            <p className="text-3xl font-bold text-text-primary">
-              12/12 <span className="text-lg font-normal text-text-secondary">planted gaps caught by BOTH versions</span>
-            </p>
-            <p className="text-text-muted text-sm mt-2 italic">
-              The structure does the work. The persona is optional seasoning.
-            </p>
-          </div>
-
-          {/* Key Findings */}
-          <div className="space-y-3 mb-8 max-w-3xl">
-            {[
-              "Gap detection tied — the co-pilot structure caught everything regardless of persona",
-              "Persona traded precision for persuasion — sounded confident but less calibrated",
-              "Fix: replaced persona with analysis rules + claim verification framework → v2.1",
-            ].map((finding, i) => (
-              <div key={i} className="flex items-start gap-3">
-                <span className="font-mono text-xs text-accent-blue mt-0.5">{i + 1}.</span>
-                <p className="text-text-secondary text-sm leading-relaxed">{finding}</p>
-              </div>
-            ))}
-          </div>
-
-          {/* Bottom Badge */}
-          <div className="rounded-lg bg-accent-green/10 border border-accent-green/20 px-5 py-3 text-center">
-            <p className="text-sm text-accent-green font-medium">
-              Kerzner Level 5: Continuous Improvement — framework tested, measured, and upgraded in 24 hours
-            </p>
-          </div>
-        </div>
-
-        {/* ── JSON Schema Preview ── */}
-        <div
-          className={`mb-20 transition-all duration-700 delay-200 ${
-            inView ? "opacity-100 translate-y-0" : "opacity-0 translate-y-8"
-          }`}
-        >
-          <h3 className="text-xl font-semibold text-text-primary mb-6">
-            JSON Schema Preview
-          </h3>
-          <div className="rounded-xl border border-accent-blue/20 bg-bg-card overflow-hidden">
-            {/* Editor chrome */}
-            <div className="flex items-center gap-2 px-4 py-3 border-b border-white/5 bg-bg-surface">
-              <div className="flex gap-1.5">
-                <div className="w-3 h-3 rounded-full bg-accent-red/60" />
-                <div className="w-3 h-3 rounded-full bg-accent-orange/60" />
-                <div className="w-3 h-3 rounded-full bg-accent-green/60" />
-              </div>
-              <span className="font-mono text-xs text-text-muted ml-2">
-                handoff-schema-v1.3.0.json
-              </span>
-            </div>
-            <div className="p-5 overflow-x-auto">
-              <JsonHighlight json={jsonPreview} />
-            </div>
-          </div>
-          <p className="text-text-muted text-xs font-mono mt-3 text-center">
-            9 schemas · 21 shared types · 8 required fields · Full traceability
-          </p>
-
-          {/* v2.2 Co-Pilot Output */}
-          <h4 className="text-lg font-semibold text-text-primary mt-8 mb-4">
-            v2.2 Co-Pilot Output
-          </h4>
-          <div className="rounded-xl border border-accent-blue/20 bg-bg-card overflow-hidden">
-            <div className="flex items-center gap-2 px-4 py-3 border-b border-white/5 bg-bg-surface">
-              <div className="flex gap-1.5">
-                <div className="w-3 h-3 rounded-full bg-accent-red/60" />
-                <div className="w-3 h-3 rounded-full bg-accent-orange/60" />
-                <div className="w-3 h-3 rounded-full bg-accent-green/60" />
-              </div>
-              <span className="font-mono text-xs text-text-muted ml-2">
-                copilot-output-v2.2.json
-              </span>
-            </div>
-            <div className="p-5 overflow-x-auto">
-              <JsonHighlight json={copilotJsonPreview} />
-            </div>
-          </div>
-        </div>
-
-        {/* ── Tool Ecosystem ── */}
-        <div
-          className={`transition-all duration-700 delay-300 ${
-            inView ? "opacity-100 translate-y-0" : "opacity-0 translate-y-8"
-          }`}
-        >
-          <h3 className="text-xl font-semibold text-text-primary mb-6">
-            Tool Ecosystem
-          </h3>
-          <div className="grid sm:grid-cols-2 md:grid-cols-3 gap-4">
-            {toolEcosystem.map((cat) => (
-              <div
-                key={cat.category}
-                className="p-4 rounded-xl border border-white/5 bg-bg-card"
-              >
-                <p className="font-mono text-accent-blue text-xs tracking-wider uppercase mb-3">
-                  {cat.category}
-                </p>
-                <div className="flex flex-wrap gap-1.5">
-                  {cat.tools.map((tool) => (
-                    <span
-                      key={tool}
-                      className="px-2 py-0.5 text-xs rounded bg-bg-surface text-text-secondary border border-white/5 font-mono"
-                    >
-                      {tool}
-                    </span>
-                  ))}
-                </div>
               </div>
             ))}
           </div>

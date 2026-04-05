@@ -1,13 +1,10 @@
 import Navbar from "@/components/Navbar";
 import Hero from "@/components/Hero";
-import About from "@/components/About";
-import Timeline from "@/components/Timeline";
-import PMAgentChain from "@/components/PMAgentChain";
-import CaseStudy from "@/components/CaseStudy";
 import CloudSyncBanner from "@/components/CloudSyncBanner";
-import Dashboard from "@/components/Dashboard";
-import Security from "@/components/Security";
-import SocialProof from "@/components/SocialProof";
+import SocialProofStrip from "@/components/SocialProofStrip";
+import PMAgentChain from "@/components/PMAgentChain";
+import About from "@/components/About";
+import CaseStudy from "@/components/CaseStudy";
 import Contact from "@/components/Contact";
 import Footer from "@/components/Footer";
 
@@ -18,13 +15,10 @@ export default function Home() {
       <main>
         <Hero />
         <CloudSyncBanner />
-        <About />
-        <Timeline />
+        <SocialProofStrip />
         <PMAgentChain />
+        <About />
         <CaseStudy />
-        <Dashboard />
-        <Security />
-        <SocialProof />
         <Contact />
       </main>
       <Footer />

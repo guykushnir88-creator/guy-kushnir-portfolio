@@ -1,9 +1,9 @@
 "use client";
 
 import { useEffect, useRef, useState } from "react";
+import Link from "next/link";
 
 const stats = [
-  { label: "Years Experience", value: 15, suffix: "+" },
   { label: "AI Agents", value: 6, suffix: "" },
   { label: "Files", value: 180, suffix: "" },
   { label: "Quality Grade", value: "A", suffix: "", isText: true },
@@ -103,54 +103,38 @@ export default function Hero() {
 
       {/* Content */}
       <div className="relative z-10 max-w-3xl mx-auto">
-        {/* Label */}
-        <div className="inline-flex items-center gap-2 mb-6 px-3 py-1.5 rounded-full border border-accent-blue/30 bg-accent-blue/5">
-          <span className="w-2 h-2 rounded-full bg-accent-green animate-pulse" />
-          <span className="font-mono text-xs text-accent-blue tracking-wider">
-            Available for new projects
-          </span>
-        </div>
-
         {/* Name */}
         <h1 className="text-5xl md:text-7xl font-bold text-text-primary mb-4 tracking-tight">
-          Guy Kushnir
+          PM Agent Chain
         </h1>
 
         {/* Title */}
-        <p className="font-mono text-accent-blue text-lg md:text-xl mb-6 tracking-wide">
-          Senior Project Manager{" "}
-          <span className="text-text-muted">|</span>{" "}
-          AI Builder
+        <p className="font-mono text-accent-blue text-base md:text-lg mb-6 tracking-wide">
+          by Guy Kushnir
         </p>
 
         {/* Description */}
         <p className="text-text-secondary text-base md:text-lg leading-relaxed max-w-2xl mx-auto mb-10">
-          15+ years leading enterprise projects across FinTech, InsurTech, and
-          Cybersecurity.
-          <br className="hidden md:block" />
-          Now building AI systems that automate what PMs do manually.
+          AI-powered project lifecycle analysis that produces 45 auditable
+          deliverables in 91 minutes.
         </p>
 
         {/* CTAs */}
         <div className="flex flex-col sm:flex-row gap-4 justify-center">
-          <button
-            onClick={() => {
-              const el = document.querySelector("#pm-agent-chain");
-              if (el) el.scrollIntoView({ behavior: "smooth" });
-            }}
+          <Link
+            href="/case-study"
             className="px-6 py-3 bg-accent-blue text-white font-medium rounded-lg hover:bg-accent-blue/90 transition-all duration-200 hover:shadow-blue-glow"
           >
-            View PM Agent Chain ↓
-          </button>
-          <button
-            onClick={() => {
-              const el = document.querySelector("#contact");
-              if (el) el.scrollIntoView({ behavior: "smooth" });
-            }}
+            See the case study →
+          </Link>
+          <a
+            href="https://calendly.com/guykushnir/pm-agent-chain-30-min-discovery-call"
+            target="_blank"
+            rel="noopener noreferrer"
             className="px-6 py-3 border border-accent-blue/40 text-accent-blue font-medium rounded-lg hover:bg-accent-blue/10 transition-all duration-200"
           >
-            Get in Touch →
-          </button>
+            Book a discovery call →
+          </a>
         </div>
       </div>
 
