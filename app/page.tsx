@@ -17,11 +17,11 @@ export default function Home() {
       <Navbar />
       <main>
         <Hero />
+        <CloudSyncBanner />
         <About />
         <Timeline />
         <PMAgentChain />
         <CaseStudy />
-        <CloudSyncBanner />
         <Dashboard />
         <Security />
         <SocialProof />

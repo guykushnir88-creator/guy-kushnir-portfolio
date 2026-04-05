@@ -5,9 +5,9 @@ import { useEffect, useRef, useState } from "react";
 const stats = [
   { label: "Years Experience", value: 15, suffix: "+" },
   { label: "AI Agents", value: 6, suffix: "" },
-  { label: "Files", value: 108, suffix: "" },
+  { label: "Files", value: 180, suffix: "" },
   { label: "Quality Grade", value: "A", suffix: "", isText: true },
-  { label: "Framework Version", value: "2.2", suffix: "", isText: true },
+  { label: "Framework Version", value: "2.3", suffix: "", isText: true },
 ];
 
 function easeOutCubic(t: number): number {

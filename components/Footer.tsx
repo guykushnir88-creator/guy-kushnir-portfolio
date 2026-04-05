@@ -4,7 +4,7 @@ export default function Footer() {
       <div className="max-w-6xl mx-auto flex flex-col md:flex-row items-center justify-between gap-4">
         <p className="font-mono text-accent-blue font-semibold text-sm">GK</p>
         <p className="text-text-muted text-sm">
-          © {new Date().getFullYear()} Guy Kushnir. Built with Claude AI. Framework v2.2
+          © {new Date().getFullYear()} Guy Kushnir. Built with Claude AI. Framework v2.3
         </p>
         <div className="flex items-center gap-4 text-text-muted text-sm">
           <a
