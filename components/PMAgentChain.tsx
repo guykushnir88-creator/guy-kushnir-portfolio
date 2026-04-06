@@ -119,32 +119,46 @@ const agents = [
 
 const features = [
   {
-    key: "verification_evidence",
-    title: "Evidence-before-claims",
+    key: "development_mode",
+    title: "AI-Aware Estimation",
     description:
-      "Every agent must prove work with metrics: docs, word count, coverage %. No handoff without proof.",
+      "The chain knows if humans or AI are building. Velocity coefficients adjust estimates automatically — preventing the 132x mismatch discovered in dogfooding.",
     color: "#2E8BC0",
   },
   {
-    key: "goal_backward_check",
-    title: "Goal-backward verification",
+    key: "benefits_realization",
+    title: "Benefits Realization",
     description:
-      "Verify what must be TRUE, not what was done. Truths → artifacts → wiring. Agent 5 can't score without it.",
+      "Every requirement maps to a measurable business benefit. Agent 6 tracks which benefits were realized vs planned. Closes the 'so what?' gap.",
+    color: "#27AE60",
+  },
+  {
+    key: "self_iteration",
+    title: "Self-Iteration Loops",
+    description:
+      "Each agent scores its own output before handoff. Below 70%? It re-generates the weakest deliverable. Max 2 iterations. Quality without manual review loops.",
     color: "#8E44AD",
   },
   {
-    key: "context_checkpoint",
-    title: "Context checkpoints",
+    key: "observation_counting",
+    title: "N-Count Validation",
     description:
-      "Crash recovery. Checkpoint after each deliverable. Next session resumes — no restart.",
+      "Every knowledge base finding tracks how many projects confirmed it. N=1 findings are tagged unvalidated. The chain doesn't over-generalize from a single data point.",
     color: "#E67E22",
   },
   {
-    key: "wave_execution",
-    title: "Wave execution",
+    key: "hierarchical_config",
+    title: "5-Layer Configuration",
     description:
-      "Tasks grouped by dependency. Sequential now, parallel-ready for custom dashboard.",
-    color: "#27AE60",
+      "Runtime override > agent config > project config > org policy > chain defaults. Enterprise clients get full customization without touching agent prompts.",
+    color: "#3B8BD4",
+  },
+  {
+    key: "chain_self_assessment",
+    title: "Chain Self-Assessment",
+    description:
+      "Agent 6 grades the chain's own performance across 5 dimensions: gap detection, bias awareness, estimation accuracy, knowledge accumulation, actionable output.",
+    color: "#1D9E75",
   },
 ];
 
@@ -373,24 +387,23 @@ export default function PMAgentChain() {
           </div>
         </div>
 
-        {/* ── v2.3 Co-Pilot Layer ── */}
+        {/* ── v2.4 Co-Pilot Layer ── */}
         <div
           className={`transition-all duration-700 delay-150 ${
             inView ? "opacity-100 translate-y-0" : "opacity-0 translate-y-8"
           }`}
         >
           <h3 className="text-xl font-semibold text-text-primary mb-1">
-            v2.3 — The Co-Pilot Layer
+            v2.4 — The Co-Pilot Layer
           </h3>
           <p className="text-text-secondary text-sm italic mb-6">
             Agents that challenge PMs, not just execute for them.
           </p>
           <p className="text-text-secondary text-sm leading-relaxed mb-6 max-w-3xl">
-            v2.3 adds an AI co-pilot layer across all 6 agents with 30 pattern tags,
-            bias detection, strategic alignment scoring, and per-client configuration.
-            Every agent now challenges assumptions, identifies blind spots, and builds
-            institutional knowledge — turning the chain from an automation tool into a
-            senior PM advisor.
+            v2.4 adds development mode awareness, AI velocity coefficients, EVM adaptation
+            for AI projects, benefits realization tracking, self-iteration loops, and MCP
+            connector readiness — on top of the co-pilot layer with 30 pattern tags, bias
+            detection, and strategic alignment scoring across all 7 agents.
           </p>
           <div className="grid sm:grid-cols-2 gap-4">
             {[
