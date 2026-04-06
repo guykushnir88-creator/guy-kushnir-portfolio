@@ -5,6 +5,21 @@ import { useInView } from "./hooks/useInView";
 
 const agents = [
   {
+    id: 0,
+    name: "Assess",
+    role: "PM Maturity",
+    color: "#9B59B6",
+    evidence: "10-dimension profile",
+    outputs: [
+      "PM Maturity Assessment",
+      "Complexity Profile",
+      "Agent Configuration",
+      "Baseline Metrics",
+    ],
+    description:
+      "Evaluates project and organizational PM maturity before the chain begins. Calibrates agent intensity and co-pilot challenge level based on complexity dimensions.",
+  },
+  {
     id: 1,
     name: "Initiation",
     role: "Requirements",
@@ -153,8 +168,8 @@ export default function PMAgentChain() {
             AI-Powered Project Lifecycle Management
           </p>
           <p className="text-text-secondary text-base md:text-lg max-w-2xl mx-auto leading-relaxed">
-            6 autonomous agents covering the full PMI lifecycle — from initiation
-            to closing — connected by validated JSON handoffs (Schema v1.3.0)
+            7 autonomous agents covering the full PMI lifecycle — from assessment
+            to closing — producing 274 files connected by validated JSON handoffs (Schema v1.2.0)
             that ensure zero information loss between phases.
           </p>
           <p className="mt-3 text-text-muted text-sm font-mono">
@@ -240,52 +255,55 @@ export default function PMAgentChain() {
           </div>
 
           {/* Expanded agent detail */}
-          {activeAgent !== null && (
-            <div
-              className="mt-6 p-6 rounded-xl border bg-bg-surface transition-all duration-300"
-              style={{
-                borderColor: agents[activeAgent - 1].color + "40",
-              }}
-            >
-              <div className="flex flex-wrap gap-6">
-                <div className="flex-1 min-w-[200px]">
-                  <h4
-                    className="font-semibold text-lg mb-2"
-                    style={{ color: agents[activeAgent - 1].color }}
-                  >
-                    Agent {activeAgent}: {agents[activeAgent - 1].name}
-                  </h4>
-                  <p className="text-text-secondary text-sm leading-relaxed mb-4">
-                    {agents[activeAgent - 1].description}
-                  </p>
-                  <p className="font-mono text-xs text-text-muted">
-                    Evidence: {agents[activeAgent - 1].evidence}
-                  </p>
-                </div>
-                <div className="flex-1 min-w-[200px]">
-                  <p className="text-text-muted text-xs font-mono uppercase tracking-wider mb-3">
-                    Outputs
-                  </p>
-                  <ul className="space-y-1.5">
-                    {agents[activeAgent - 1].outputs.map((o) => (
-                      <li
-                        key={o}
-                        className="flex items-center gap-2 text-sm text-text-secondary"
-                      >
-                        <span
-                          className="w-1.5 h-1.5 rounded-full flex-shrink-0"
-                          style={{
-                            backgroundColor: agents[activeAgent - 1].color,
-                          }}
-                        />
-                        {o}
-                      </li>
-                    ))}
-                  </ul>
+          {activeAgent !== null && (() => {
+            const agent = agents.find(a => a.id === activeAgent)!;
+            return (
+              <div
+                className="mt-6 p-6 rounded-xl border bg-bg-surface transition-all duration-300"
+                style={{
+                  borderColor: agent.color + "40",
+                }}
+              >
+                <div className="flex flex-wrap gap-6">
+                  <div className="flex-1 min-w-[200px]">
+                    <h4
+                      className="font-semibold text-lg mb-2"
+                      style={{ color: agent.color }}
+                    >
+                      Agent {agent.id}: {agent.name}
+                    </h4>
+                    <p className="text-text-secondary text-sm leading-relaxed mb-4">
+                      {agent.description}
+                    </p>
+                    <p className="font-mono text-xs text-text-muted">
+                      Evidence: {agent.evidence}
+                    </p>
+                  </div>
+                  <div className="flex-1 min-w-[200px]">
+                    <p className="text-text-muted text-xs font-mono uppercase tracking-wider mb-3">
+                      Outputs
+                    </p>
+                    <ul className="space-y-1.5">
+                      {agent.outputs.map((o) => (
+                        <li
+                          key={o}
+                          className="flex items-center gap-2 text-sm text-text-secondary"
+                        >
+                          <span
+                            className="w-1.5 h-1.5 rounded-full flex-shrink-0"
+                            style={{
+                              backgroundColor: agent.color,
+                            }}
+                          />
+                          {o}
+                        </li>
+                      ))}
+                    </ul>
+                  </div>
                 </div>
               </div>
-            </div>
-          )}
+            );
+          })()}
 
           {/* Quality weights */}
           <div className="mt-6 p-4 rounded-xl border border-white/5 bg-bg-card">
@@ -314,7 +332,7 @@ export default function PMAgentChain() {
           </div>
 
           <p className="text-text-muted text-xs font-mono mt-4 text-center">
-            v2.3 — Co-pilot layer on all 6 agents. 180 files. 30 pattern tags. Bias detection. Strategic alignment scoring. Per-client configuration.
+            v2.4 — 7 agents. 274 files. 21 features. Development mode awareness. AI velocity coefficients. Benefits realization. Self-iteration loops.
           </p>
         </div>
 

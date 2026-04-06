@@ -1,6 +1,7 @@
 import Navbar from "@/components/Navbar";
 import Hero from "@/components/Hero";
 import CloudSyncBanner from "@/components/CloudSyncBanner";
+import ComboDBanner from "@/components/ComboDBanner";
 import SocialProofStrip from "@/components/SocialProofStrip";
 import PMAgentChain from "@/components/PMAgentChain";
 import About from "@/components/About";
@@ -15,6 +16,7 @@ export default function Home() {
       <main>
         <Hero />
         <CloudSyncBanner />
+        <ComboDBanner />
         <SocialProofStrip />
         <PMAgentChain />
         <About />

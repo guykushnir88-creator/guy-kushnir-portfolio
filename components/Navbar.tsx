@@ -4,9 +4,10 @@ import { useState, useEffect } from "react";
 import Link from "next/link";
 import { usePathname } from "next/navigation";
 
-const navLinks = [
+const navLinks: { label: string; href: string; external?: boolean }[] = [
   { label: "PM Agent Chain", href: "#pm-agent-chain" },
   { label: "Case Study", href: "/case-study" },
+  { label: "Dashboard", href: "https://combo-d-dashboard.vercel.app", external: true },
   { label: "ROI Calculator", href: "/roi-calculator" },
   { label: "Assessment", href: "/assessment" },
   { label: "About", href: "#about" },
@@ -66,7 +67,16 @@ export default function Navbar() {
         <ul className="hidden md:flex items-center gap-8">
           {navLinks.map((link) => (
             <li key={link.href}>
-              {link.href.startsWith("/") ? (
+              {link.external ? (
+                <a
+                  href={link.href}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="text-text-muted hover:text-text-primary text-sm font-medium transition-colors duration-200 hover:text-accent-blue"
+                >
+                  {link.label}
+                </a>
+              ) : link.href.startsWith("/") ? (
                 <Link
                   href={link.href}
                   className="text-text-muted hover:text-text-primary text-sm font-medium transition-colors duration-200 hover:text-accent-blue"
@@ -115,7 +125,17 @@ export default function Navbar() {
           <ul className="flex flex-col gap-4">
             {navLinks.map((link) => (
               <li key={link.href}>
-                {link.href.startsWith("/") ? (
+                {link.external ? (
+                  <a
+                    href={link.href}
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    onClick={() => setMenuOpen(false)}
+                    className="text-text-secondary hover:text-accent-blue text-base font-medium transition-colors w-full text-left block"
+                  >
+                    {link.label}
+                  </a>
+                ) : link.href.startsWith("/") ? (
                   <Link
                     href={link.href}
                     onClick={() => setMenuOpen(false)}

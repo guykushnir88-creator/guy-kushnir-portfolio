@@ -22,7 +22,9 @@ export default function SocialProofStrip() {
           <span className="mx-2 text-white/20">·</span>
           <span className="text-text-primary font-semibold">92%</span> PMBOK coverage
           <span className="mx-2 text-white/20">·</span>
-          Used by PMO leaders across <span className="text-text-secondary">FinTech, Defense, and Enterprise IT</span>
+          <span className="text-text-primary font-semibold">2</span> projects analyzed
+          <span className="mx-2 text-white/20">·</span>
+          <span className="text-text-primary font-semibold">132x</span> velocity discovery
         </p>
       </div>
     </section>

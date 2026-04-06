@@ -4,10 +4,10 @@ import { useEffect, useRef, useState } from "react";
 import Link from "next/link";
 
 const stats = [
-  { label: "AI Agents", value: 6, suffix: "" },
-  { label: "Files", value: 180, suffix: "" },
+  { label: "AI Agents", value: 7, suffix: "" },
+  { label: "Files", value: 274, suffix: "" },
   { label: "Quality Grade", value: "A", suffix: "", isText: true },
-  { label: "Framework Version", value: "2.3", suffix: "", isText: true },
+  { label: "Framework Version", value: "2.4", suffix: "", isText: true },
 ];
 
 function easeOutCubic(t: number): number {
@@ -115,8 +115,7 @@ export default function Hero() {
 
         {/* Description */}
         <p className="text-text-secondary text-base md:text-lg leading-relaxed max-w-2xl mx-auto mb-10">
-          AI-powered project lifecycle analysis that produces 45 auditable
-          deliverables in 91 minutes.
+          99 auditable deliverables across 2 real projects. 7 agents. 21 features. The PM leads.
         </p>
 
         {/* CTAs */}
